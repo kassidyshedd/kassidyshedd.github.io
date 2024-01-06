@@ -1,0 +1,169 @@
+body{
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#welcome{
+    height: 15vw;
+    width: 55vw;
+    left: 30%;
+    transform: translate(20%);
+    stroke-dasharray: 1354;
+    animation: 5s fillSvgWelcome linear;
+}
+
+@keyframes fillSvgWelcome{
+    0%{
+        stroke-dashoffset: 1354;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+
+}
+
+#to{
+    height:15vw;
+    width: 35vw;
+    left: 30%;
+    transform: translate(20%);
+    stroke-dasharray: 312;
+    animation: 5s fillSvgTo linear;
+}
+
+@keyframes fillSvgTo{
+    0%{
+        stroke-dashoffset: 312;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+
+}
+
+#dash{
+    height: 8vw;
+    width: 8vw;
+    right: 10%;
+    transform: translate(-245%);
+    stroke-dasharray: 62;
+    animation: 5s fillSvgDash linear;
+}
+
+@keyframes fillSvgDash{
+    0%{
+        stroke-dashoffset: 62;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+
+
+
+#robot{
+    height: 20vw;
+    width: 35vw;
+    stroke-dasharray: 4002;
+    animation: 5s fillSvg2 linear;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.color {
+    background: linear-gradient(to right, #a9afd1, #a1cdf4);
+}
+
+
+.titleheader {
+    font-family: 'Slabo 27px', serif;
+    text-align: center;
+    margin-top: 35px;
+    font-size: 150px;
+    color: #494D81;
+}
+
+
+.portfolioheader {
+    font-family: 'Slabo 27px', serif;
+    margin-top: 55vh;
+    color: #494D81; 
+    font-size: 96px;
+    padding-left: 45vw;
+}   
+
+@keyframes fillSvg2{
+    0%{
+        stroke-dashoffset: 4002;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+
+}
+
+video{
+    margin-top: 2.5vh;
+    width: 700px;
+    height: 400px;
+    display: block;
+}
+
+.video-container{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.spc-img{
+    margin-top: 4vh;
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.video-label{
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.video-label1{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.image-label{
+    text-align: center;
+}
+
+.video-label:hover video{
+    transform: scale(1.2);
+}
+
+.video-label1:hover video{
+    transform: scale(1.2);
+}
+
+.aboutme{
+    font-family: 'Slabo 27px', serif;
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    color: #494D81; 
+    font-size: 96px;
+    padding-left: 40vw;
+}   
+
+a{
+    text-decoration: none;
+    font-size: 200%;
+    color:#494D81;
+    cursor: pointer;
+}
+
+
