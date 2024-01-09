@@ -1,0 +1,80 @@
+.color{
+    background: linear-gradient(to right, #a9afd1, #a1cdf4) ;
+}
+
+.titleheader{
+    font-family: 'Slabo 27px', serif;
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 2.5vw;
+    color: #494D81;
+}
+
+.video-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.video-wrapper{
+    flex: 1;
+}
+
+.page-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.video-container video{
+    width: 45vw;
+    height: auto;
+    padding-left: 2vw;
+    padding-top: 8vh;
+    padding-bottom: 3vh;
+}
+
+.caption{
+    padding-left: 3vw;
+    max-width: 44vw;
+    font-family: 'Slabo 27px', serif;
+    font-size: 1.9vw;
+    color: #494D81;
+    padding-bottom: 2vh;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.text-column{
+    flex: 1;
+    padding-top: 6.5vh;
+    padding-right: 4vw;
+}
+
+.text-column .ov{
+    font-weight: bold;
+    font-family: 'Slabo 27px', serif;
+    color: #494D81;
+    font-size: 2.2vw;
+}
+
+.text-column .cont{
+    font-family: 'Slabo 27px', serif;
+    color: #494D81;
+    font-size: 1.3vw;
+    margin-bottom: 0.5em
+}
+
+.text-column .ghlink{
+    margin-left: 4vw;
+    margin-top: 10vh;
+    font-weight: bold;
+}
+
+.text-column .ghlink a{
+    font-family: 'Slabo 27px', serif;
+    font-size: 2vw;
+    text-decoration: none;
+    color: #494D81;
+}
+

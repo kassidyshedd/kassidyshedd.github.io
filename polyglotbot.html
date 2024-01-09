@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="pgbstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&family=Slabo+27px&display=swap" rel="stylesheet">
+</head>
+
+<body class="color">
+
+    <div class="titleheader">
+        Polyglotbot - A Reading, Writing, Speaking, and Translation 7 DOF Translation Robot
+    </div>
+
+    <div class="page-content">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <video autoplay muted loop controls id="video1">
+                    <source src="videos/spanish_to_korean.mp4" type="video/mp4">
+                </video>
+                <div class="caption"> <span class="bold">Spanish to Korean Translation: </span><br>Robot translates Spanish handwritten words to Korean.</div>
+            </div>
+
+            <div class="video-wrapper">
+                <video autoplay muted loop controls id="video2">
+                    <source src="videos/en2ch" type="video/mp4">
+                </video>
+                <div class="caption"> <span class="bold">English to Chinese Translation: </span><br>Robot translates English handwritten words to Chinese.</div>
+            </div>
+            
+            <div class="video-wrapper">
+                <video autoplay muted loop controls id="video3">
+                    <source src="videos/voice_hindi.mp4" type="video/mp4">
+                </video>
+                <div class="caption"> <span class="bold">Voice - Hindi to English Translation: </span><br>User speaks Hindi and Robot translates to English.
+                <br>(Unmute!!)</div>
+            </div>
+
+            <div class="video-wrapper">
+                <video autoplay muted loop controls id="video4">
+                    <source src="videos/pickup_putdown_pen.mp4" type="video/mp4">
+                </video>
+                <div class="caption"> <span class="bold">Pick Up & Put Down Expo Marker: </span><br>Upon startup the robot picks up the expo marker from its 
+                    home position. Upon shutdown the robot puts the marker back in its home position.</div>
+            </div>
+        </div>
+        <div class="text-column">
+            <div class="ov">
+                Project Description<br>
+            </div>
+            <div class="cont">
+                The polyglotbot is a 7 DOF Franka robot arm that uses OCR (object Character Recognition) 
+                to read in a handwritten word in any language as well as a language code. Then it puts 
+                the word into a Google Translate API and translates the word into the language of the language
+                code. The translated word then gets sent to string to waypoint node with will create the waypoints
+                required to draw each character in the word. These waypoints get sent to the robot, which will then
+                grab an expo marker from its home location, move to the whiteboard and write out the translated word. The 
+                robot will also say the orginal written word in the original language and then say it in the translated
+                language. April tags are posted on the whiteboard to help the robot determine how close to the board it 
+                should get to successfully write the word. After the word is written, the robot will put the marker back in
+                its home location. The robot also has an option for a person to speak a word in any language, and then the robot
+                will write that word translated to english on the whiteboard. <br>
+            </div>
+
+            <div class="ov">
+                <br>Hardware<br></ov>
+            </div>
+            <div class="cont">
+                7 DOF Franka Robot Arm <br>
+                Intel Realsense Camera (x2)<br>
+            </div>
+
+            <div class="ov">
+                <br>Computer Vision<br>
+            </div>
+            <div class="cont">
+                This project uses one Intel Realsense Camera for OCR of the handwritten word and language code on the whiteboard. 
+                YOLO (Real-time object detection for ROS) is used to determine if there is a person in the area of the robot. If 
+                there is a person present, the robot will not move until they have cleared from the area. <br>
+            </div>
+
+            <div class="ov">
+                <br>Translation<br>
+            </div>
+            <div class="cont">
+                The handwritten word and language code are then run through a Google Translate API, with the handwritten
+                word being translated into the language of the language code. A string of the translated word and language
+                code are returned. <br>
+            </div>
+
+            <div class="ov">
+                <br>String to Waypoints<br>
+            </div>
+            <div class="cont">
+                The string to waypoints packge takes in the translated string and language code, and will return a list of
+                waypoints correspoding with how to write the letters. This packages uses matplotlib to create these waypoints. <br>
+            </div>
+
+            <div class="ov">
+                <br>Write Letters<br>
+            </div>
+            <div class="cont">
+                The write_letters package uses a custom ROS2 move_it API to move the Franka arm. The waypoints are put through
+                the motion_plan_package to command the robot arm to move through waypoints using the Cartesian path planner. <br>
+            </div>
+
+            <div class="ov">
+                <br>April Tags<br>
+            </div>
+            <div class="cont">
+                Using the Intel Realsense camera to detect three april tags located on the whiteboard helps the robot to determine
+                its location relative to the whiteboard, and helps it set the distance from the whiteboard it should move to
+                so it may successfully write. <br>
+            </div>
+
+            <div class="ov">
+                <br>Speaking<br>
+            </div>
+            <div class="cont">
+                The robot has the ability to turn the translated word/phrase into 
+                audio played through a speaker.
+            </div>
+
+            <div class="ov">
+                <br>Audio Recognition<br>
+            </div>
+            <div class="cont">
+                This package allows a user to speak into a microphone in a preset language, and the robot will translated the
+                spoken word into english. <br>
+            </div>
+
+            <div class="ov">
+                <br>Pick up / Put Away Pen<br>
+            </div>
+            <div class="cont">
+                Upon startup of the program, the robot will grab the marker from the marker's home location. Upon completion of the 
+                program, the robot will put the marker back in its home location. <br>
+            </div>
+
+            <div class="ghlink">
+                <a href="https://github.com/kassidyshedd/Polyglotbot">
+                    <h1 class="ghlink">Click to go to GitHub Page!</h1>
+                </a>
+                <div class="cont">
+                    <br>Team Members: Megan Black, Henry Buron, Allen Liu, Damien Koh
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+</body>
+</html>
