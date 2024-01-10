@@ -14,7 +14,7 @@
 <body class="color">
 
     <div class="titleheader">
-        Polyglotbot - A Reading, Writing, Speaking, and Translation 7 DOF Translation Robot
+        Polyglotbot - A 7 DOF Translation Robot with Reading, Writing, and Speaking Capabilities
     </div>
 
     <div class="page-content">
@@ -54,17 +54,24 @@
                 Project Description<br>
             </div>
             <div class="cont">
-                The polyglotbot is a 7 DOF Franka robot arm that uses OCR (object Character Recognition) 
-                to read in a handwritten word in any language as well as a language code. Then it puts 
-                the word into a Google Translate API and translates the word into the language of the language
-                code. The translated word then gets sent to string to waypoint node with will create the waypoints
-                required to draw each character in the word. These waypoints get sent to the robot, which will then
-                grab an expo marker from its home location, move to the whiteboard and write out the translated word. The 
-                robot will also say the orginal written word in the original language and then say it in the translated
-                language. April tags are posted on the whiteboard to help the robot determine how close to the board it 
-                should get to successfully write the word. After the word is written, the robot will put the marker back in
-                its home location. The robot also has an option for a person to speak a word in any language, and then the robot
-                will write that word translated to english on the whiteboard. <br>
+                The Polyglotbot is a 7-DOF Franka robot arm utilizes OCR (Optical Character Recognition) to decipher 
+                handwritten words in any language along with a corresponding language code. Subsequently, it utilizes the 
+                Google Translate API to translate the word into the language specified by the code. The translated word is 
+                then processed by a "string to waypoint" node, generating the necessary waypoints to outline each character 
+                of the word. These waypoints are transmitted to the robot, prompting it to move to the whiteboard, and write 
+                the translated word. <br>
+                
+                Additionally, the robot speakes  the original word in its native language before 
+                articulating it in the translated language. April tags affixed to the whiteboard assist the robot in determining 
+                the best distance from the whiteboard for optimal writing capabilities. Furthermore, the robot offers an option for 
+                individuals to verbally communicate a word in any language. Afterward, the robot transcribes and writes the translated 
+                word in English on the whiteboard.<br>
+                
+                Upon startup, the robot will retrieve an expo marker from a designated location, and on
+                shutdown, the robot will return the marker to that designated location. 
+                The OCR is triggered using YOLO to detect if a person has approached to write a word on the whiteboard. Once the person has been 
+                detected and has moved away, the robot will initiate its workflow. This process repeats after each translation cycle, allowing for 
+                multiple translation cycles in a row<br>
             </div>
 
             <div class="ov">
@@ -79,67 +86,64 @@
                 <br>Computer Vision<br>
             </div>
             <div class="cont">
-                This project uses one Intel Realsense Camera for OCR of the handwritten word and language code on the whiteboard. 
-                YOLO (Real-time object detection for ROS) is used to determine if there is a person in the area of the robot. If 
-                there is a person present, the robot will not move until they have cleared from the area. <br>
+                This project utilizes one Intel RealSense Camera for OCR of the handwritten word and language code on the whiteboard. YOLO (Real-time
+                object detection for ROS) is employed to determine if there is a person in the vicinity of the robot. If a person is present, the 
+                robot will not move until they have left the area. <br>
             </div>
 
             <div class="ov">
                 <br>Translation<br>
             </div>
             <div class="cont">
-                The handwritten word and language code are then run through a Google Translate API, with the handwritten
-                word being translated into the language of the language code. A string of the translated word and language
-                code are returned. <br>
+                The handwritten word and language code are processed using the Google Translate API, resulting in the translation of the handwritten 
+                word into the language specified by the language code. The translated word and language code are then returned as a string. <br>
             </div>
 
             <div class="ov">
                 <br>String to Waypoints<br>
             </div>
             <div class="cont">
-                The string to waypoints packge takes in the translated string and language code, and will return a list of
-                waypoints correspoding with how to write the letters. This packages uses matplotlib to create these waypoints. <br>
+                The string-to-waypoints package takes in the translated string and language code, returning a list of waypoints corresponding to how 
+                to write the letters. This package uses matplotlib to create these waypoints. <br>
             </div>
 
             <div class="ov">
                 <br>Write Letters<br>
             </div>
             <div class="cont">
-                The write_letters package uses a custom ROS2 move_it API to move the Franka arm. The waypoints are put through
-                the motion_plan_package to command the robot arm to move through waypoints using the Cartesian path planner. <br>
+                The write_letters package utilizes a custom ROS2 move_it API to control the Franka arm. The waypoints are processed through the 
+                motion_plan_package to command the robot arm to move along a Cartesian path, facilitating the writing of letters<br>
             </div>
 
             <div class="ov">
                 <br>April Tags<br>
             </div>
             <div class="cont">
-                Using the Intel Realsense camera to detect three april tags located on the whiteboard helps the robot to determine
-                its location relative to the whiteboard, and helps it set the distance from the whiteboard it should move to
-                so it may successfully write. <br>
+                The Intel RealSense camera detects three April tags on the whiteboard, aiding the robot in determining its location relative to the 
+                whiteboard. This information helps the robot set the optimal distance from the whiteboard for successful writing. <br>
             </div>
 
             <div class="ov">
                 <br>Speaking<br>
             </div>
             <div class="cont">
-                The robot has the ability to turn the translated word/phrase into 
-                audio played through a speaker.
+                The robot can convert the translated word or phrase into audio, which is played through a speaker.
             </div>
 
             <div class="ov">
                 <br>Audio Recognition<br>
             </div>
             <div class="cont">
-                This package allows a user to speak into a microphone in a preset language, and the robot will translated the
-                spoken word into english. <br>
+                This package allows a user to speak into a microphone in a preset language, and the robot will translate the spoken word into 
+                English. <br>
             </div>
 
             <div class="ov">
                 <br>Pick up / Put Away Pen<br>
             </div>
             <div class="cont">
-                Upon startup of the program, the robot will grab the marker from the marker's home location. Upon completion of the 
-                program, the robot will put the marker back in its home location. <br>
+                Upon startup of the program, the robot will grab the marker from the marker's home location. Upon completion of the program, the 
+                robot will put the marker back in its home location.<br>
             </div>
 
             <div class="ghlink">
