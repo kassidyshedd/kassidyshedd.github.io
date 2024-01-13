@@ -10,6 +10,17 @@
     color: #494D81;
 }
 
+.returnHome a{
+    font-family: 'Slabo 27px', serif;
+    font-weight: bold;
+    color: #494D81;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.5vw;
+    margin-left: 2vw;
+    padding-top: 5vh;
+}
+
 .video-container{
     display: flex;
     flex-direction: column;

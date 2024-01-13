@@ -11,13 +11,22 @@
     color: #494D81;
 }
 
+.returnHome a{
+    font-family: 'Slabo 27px', serif;
+    color: #494D81;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.5vw;
+    margin-left: 7vw;
+}
+
 .ampic{
     display: flex;
     align-items: center;
 }
 
 .ampic img{
-    margin-left: 10vw;
+    margin-left: 5vw;
     margin-top: 3vh;
     width: 20vw;
     height: auto;
