@@ -10,8 +10,8 @@ body, html {
 
 section {
     width: 100%;
-    padding-left: 12vw;
-    padding-right: 12vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
     box-sizing: border-box;
     font-size: 2.5vh;
 }
@@ -35,12 +35,18 @@ section {
 }
 
 .video-container {
-    text-align: center;
+    text-align: left;
     margin: 15px;
+    font-size: 2vh;
 }
 
 .video-container video {
-    width: 65vh; /* You can change this based on your preference */
+    width: 15vh; /* You can change this based on your preference */
+}
+
+.video-container1 video {
+    text-align: center;
+    width: 50vh;
 }
 
 .video-container img {

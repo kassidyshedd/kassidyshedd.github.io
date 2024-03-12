@@ -5,7 +5,7 @@
     left: 3vw;
     transform: translate(10vw);
     stroke-dasharray: 1354;
-    animation: 5s fillSvgWelcome linear;
+    animation: 2s fillSvgWelcome linear;
 }
 
 @keyframes fillSvgWelcome{
@@ -25,7 +25,7 @@
     left: 25vw;
     transform: translate(8vw);
     stroke-dasharray: 312;
-    animation: 5s fillSvgTo linear;
+    animation: 2s fillSvgTo linear;
 }
 
 @keyframes fillSvgTo{
@@ -44,7 +44,7 @@
     left: 30vw;
     transform: translate(-18vw);
     stroke-dasharray: 62;
-    animation: 5s fillSvgDash linear;
+    animation: 2s fillSvgDash linear;
 }
 
 @keyframes fillSvgDash{
@@ -61,7 +61,7 @@
     height: 20vw;
     width: 35vw;
     stroke-dasharray: 4002;
-    animation: 5s fillSvg2 linear;
+    animation: 2s fillSvg2 linear;
     position: absolute;
     margin-left: 33vw;
 }

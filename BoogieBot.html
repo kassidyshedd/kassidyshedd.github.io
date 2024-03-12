@@ -43,7 +43,7 @@
     <section id="section2">
         <div class="video-container">
             <video autoplay muted loop controls>
-                <source src="videos/lnl - Made with Clipchamp.mp4" type="video/mp4">
+                <source src="videos/lnl.mp4" type="video/mp4">
             </video> 
             <img src="photos/lnl.png" alt="Description of image 1">
             <p>ROBOTIS dances to Linus and Lucy by Vince Guaraldi Trio.
@@ -53,38 +53,29 @@
 
         <div class="video-container">
             <video autoplay muted loop controls>
-                <source src="videos/il2mimi.mp4" type="video/mp4">
+                <source src="videos/l2mi.mp4" type="video/mp4">
             </video> 
             <img src="photos/l2mi.png" alt="Description of image 2">
             <p>ROBOTIS dances to I Like To Move It by will.i.am
                 <br> Unmute to listen!
             </p>
         </div>
+
+        <div class="video-container">
+            <video autoplay muted loop controls>
+                <source src="videos/gjwhv.mp4" type="video/mp4">
+            </video> 
+            <img src="photos/gwhf.png" alt="Description of image 3">
+            <p>ROBOTIS dances to I Like To Move It by will.i.am
+                <br> Unmute to listen!
+            </p>
+        </div>
+
     </section>
 
     <section id="section3">
+        <br>
         <strong><u>Core Features:</u></strong><br>
-        <strong>State Machine:</strong><br>
-        Unless specified otherwise, all nodes are developed using ROS Kinetic and programmed in C++. <br><br>
-        <ul>
-            <li><strong>WAITING: </strong> By default, ROBOTIS remains idle until activated through a service call, 
-                initiating the transition to the next state.</li>
-            <li><strong>PROCESSING: </strong> Handled by the 'audio' node, while in this state, ROBOTIS analyzes the audio file, 
-                identifying the track through shazamio and determining the song's tempo using Spotipy.
-                <br>This particular node operates under ROS1 Noetic and is programmed in Python.</li>
-            <li><strong>PICKING: </strong>Handled by the 'action_pick' node, here ROBOTIS selects dance movements that align with 
-                the song's tempo, determined by dividing the beats per minute (bpm) by 60.
-                <br>This process takes into account the robot's physical limitations, and adjusts movements to align
-                with the song's tempo.
-                <br>This particular node operates under ROS2 Galactic.
-            <li><strong>EDITING: </strong> Handled by the 'action_edit' node, here ROBOTIS compiles the selected movements into a 
-                 YAML action file, which contains all the details required for the execution of the dance routine.
-            <li><strong>PLAYING: </strong> Handled by the 'action_play' node, in this final state, ROBOTIS performs the choreographed
-                dance.
-                <br> (Note: The sound of the robot's motion may exceed the audio output; hence the overlay of music in the videos.)
-            </li>
-        </ul>
-
         <br><strong>Using shazamio and Spotipy:</strong>
         <br>The song artist and title are identified by inputting a .wav audio file into shazamio's `recognize_song` function. 
         The song and artist are then utilized by the Spotipy `search` function, to retrieve the Spotify track id. Finally, the 
@@ -105,28 +96,39 @@
     </section>
 
     <section id="section5">
-        <br><strong><u>ROS1 Bridge: </u></strong>
+        <br><strong>ROS1 Bridge: </strong>
         <br> This project incorporates the ROS1 bridge, an essential component for communication between
         ROS1 and ROS2 systems. Deployed within a Docker container, the bridge is constructed using a multi-stage Dockerfile.
         The first stage creates the ROS1 environment (Noetic), the second stage creates the ROS2 environment
         (Galactic), and the third stage creates the ROS1 bridge environment (ROS2 Galactic), by combining the necessary 
         components of the previous stages. The different stages allow for the ROS1, ROS2, and ROS1 bridge environments to be built properly.
         In this project, the bridge is used to send a custom message type from ROS2 Galactic to ROS1 Noetic. <br><br>
+
+        <strong>State Machine:</strong><br>
+        Unless specified otherwise, all nodes are developed using ROS Kinetic and programmed in C++. <br><br>
+        <ul>
+            <li><strong>WAITING: </strong> By default, ROBOTIS remains idle until activated through a service call, 
+                initiating the transition to the next state.</li>
+            <li><strong>PROCESSING: </strong> Handled by the 'audio' node, while in this state, ROBOTIS analyzes the audio file, 
+                identifying the track through shazamio and determining the song's tempo using Spotipy.
+                <br>This particular node operates under ROS1 Noetic and is programmed in Python.</li>
+            <li><strong>PICKING: </strong>Handled by the 'action_pick' node, here ROBOTIS selects dance movements that align with 
+                the song's tempo, determined by dividing the beats per minute (bpm) by 60.
+                <br>This process takes into account the robot's physical limitations, and adjusts movements to align
+                with the song's tempo.
+                <br>This particular node operates under ROS2 Galactic.
+            <li><strong>EDITING: </strong> Handled by the 'action_edit' node, here ROBOTIS compiles the selected movements into a 
+                 YAML action file, which contains all the details required for the execution of the dance routine.
+            <li><strong>PLAYING: </strong> Handled by the 'action_play' node, in this final state, ROBOTIS performs the choreographed
+                dance.
+                <br> (Note: The sound of the robot's motion may exceed the audio output; hence the overlay of music in the videos.)
+            </li>
+        </ul>
     </section>
 
     <section id="section2">
-        <div class="video-container">
-            <video autoplay muted loop controls>
-                <source src="videos/gwhf.mp4" type="video/mp4">
-            </video> 
-            <img src="photos/gwhf.png" alt="Description of image 1">
-            <p>ROBOTIS dances to 'Girls Just Want to Have Fun' by Cyndi Lauper
-                <br> Unmute!!
-            </p>
-        </div>
-        <div class="video-container">
+        <div class="video-container1">
             <video autoplay muted loop controls src="videos/Bloopers.mp4"></video>
-            <p>A few ROBOTIS bloopers.</p><br><br><br><br>
         </div>
     </section>
 
