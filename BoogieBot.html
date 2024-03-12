@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="BoogieBot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&family=Slabo+27px&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="top-links">
+        <div class="returnHome">
+            <a href="index.html">Return to the Main Page</a>
+        </div>
+        <div class="ghlink">
+            <a href="https://github.com/kassidyshedd/wp-state">
+                Click to go to GitHub Page!
+            </a>
+        </div>
+    </div>
+
+    <section id="section1">
+        <strong><u>Project Description</u></strong> <br>
+            The BoogieBot is a project designed over the course of 10 weeks, employing the 
+            ROBOTIS-OP3 humanoid robot to generate dynamic dance routines. This
+            system analyzes music files to identify the track using 
+            <a href="https://pypi.org/project/shazamio/" target="_blank">shazamio</a> and 
+            leverages 
+            <a href="https://spotipy.readthedocs.io/en/2.22.1/" target="_blank">Spotipy</a>
+            to determine the song's tempo. Utilizing this 
+            information, the BoogieBot choreographs dance sequences by aligning pre-designed
+            movements to the rhythm of the music. The technological foundation of this system
+            is built on a multi-docker framework, allowing for functionality across all components.
+            Additionally, the project utilizes the ROS1 bridge, facilitating communication between 
+            the ROS1 and ROS2 frameworks.<br><br>
+    </section>
+
+    <section id="section2">
+        <div class="video-container">
+            <video autoplay muted loop controls>
+                <source src="videos/lnl - Made with Clipchamp.mp4" type="video/mp4">
+            </video> 
+            <img src="photos/lnl.png" alt="Description of image 1">
+            <p>ROBOTIS dances to Linus and Lucy by Vince Guaraldi Trio.
+                <br> Unmute to listen!
+            </p>
+        </div>
+
+        <div class="video-container">
+            <video autoplay muted loop controls>
+                <source src="videos/il2mimi.mp4" type="video/mp4">
+            </video> 
+            <img src="photos/l2mi.png" alt="Description of image 2">
+            <p>ROBOTIS dances to I Like To Move It by will.i.am
+                <br> Unmute to listen!
+            </p>
+        </div>
+    </section>
+
+    <section id="section3">
+        <strong><u>Core Features:</u></strong><br>
+        <strong>State Machine:</strong><br>
+        Unless specified otherwise, all nodes are developed using ROS Kinetic and programmed in C++. <br><br>
+        <ul>
+            <li><strong>WAITING: </strong> By default, ROBOTIS remains idle until activated through a service call, 
+                initiating the transition to the next state.</li>
+            <li><strong>PROCESSING: </strong> Handled by the 'audio' node, while in this state, ROBOTIS analyzes the audio file, 
+                identifying the track through Shazamio and determining the song's tempo using Spotipy.
+                <br>This particular node operates under ROS1 Noetic and is programmed in Python.</li>
+            <li><strong>PICKING: </strong>Handled by the 'action_pick' node, here ROBOTIS selects dance movements that align with 
+                the song's tempo, determined by dividing the beats per minute (bpm) by 60.
+                <br>This process takes into account the robot's physical limitations, adjusting the frequency of movements to align
+                suitably with the song's tempo.
+                <br>This particular node operates under ROS2 Galactic.
+            <li><strong>EDITING: </strong> Handled by the 'action_edit' node, here ROBOTIS compiles the selected movements into a 
+                comprehensive YAML action file, which contains all the details required for the execution of the dance routine.
+            <li><strong>PLAYING: </strong> Handled by the 'action_play' node, in this final state, ROBOTIS performs the choreographed
+                dance. This stage reflects the culmination of the preceding processes, showcasing the robot's ability to translate rhythm
+                into motion. 
+                <br> (Note: The sound of the robot's motion may exceed the audio output; hence the overlay of music in the videos.)
+            </li>
+        </ul>
+
+        <br><br><strong>Docker Systems:</strong>
+        <br> At the core of the project lies a set of specialized Docker containers, designed to merge diverse environments and frameworks
+        seamlessly. The first container hosts ROS Noetic on Ubuntu 20.04, specifically chosen to satisfy a Python 3.8 requirement. The second
+        container integrates ROS1 Noetic with ROS2 Galactic, operating on Ubuntu 20.04, demonstrating intercommunication using the ROS1 bridge 
+        between different ROS versions. Custom Dockerfiles configure this architecture, ensuring that each component interacts smoothly within 
+        the ROBOTIS ecosystem. This infrastructure, which is depicted in the diagram below, highlights the use of Docker technology in this project. 
+        <br> 
+    </section>
+
+    <section id="section4">
+        <img src="photos/ddiag.png" alt="Description of full-page image" class="full-page-image">
+    </section>
+
+    <section id="section5">
+        <br><strong><u>ROS1 Bridge: </u></strong>
+        <br> This project's infrastructure incorporates the ROS1 bridge, an essential component for facilitating communication between
+        ROS1 and ROS2 systems. Deployed within a Docker container, the bridge is constructed using a multi-stage Dockerfile.
+        The different stages allow for each ROS environment to be built properly, enabling the bridge to be compiled with 
+        only the necessary components from each stage. 
+    </section>
+
+    <section id="section2">
+        <div class="video-container">
+            <video autoplay muted loop controls>
+                <source src="videos/gwhf.mp4" type="video/mp4">
+            </video> 
+            <img src="photos/gwhf.png" alt="Description of image 1">
+            <p>ROBOTIS dances to 'Girls Just Want to Have Fun' by Cyndi Lauper
+                <br> Unmute!!
+            </p>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop controls src="videos/Bloopers.mp4"></video>
+            <p>A few ROBOTIS bloopers.</p><br><br><br><br>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+</body>
+</html>
