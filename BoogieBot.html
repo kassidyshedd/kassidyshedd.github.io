@@ -85,7 +85,7 @@
             </li>
         </ul>
 
-        <br><strong>Using shazamio and Spotipy</strong>
+        <br><strong>Using shazamio and Spotipy:</strong>
         <br>The song artist and title are identified by inputting a .wav audio file into shazamio's `recognize_song` function. 
         The song and artist are then utilized by the Spotipy `search` function, to retrieve the Spotify track id. Finally, the 
         Spotify track id can be put into Spotipy's `audio_feature` function, which returns the song's tempo. <br>
@@ -108,9 +108,10 @@
         <br><strong><u>ROS1 Bridge: </u></strong>
         <br> This project incorporates the ROS1 bridge, an essential component for communication between
         ROS1 and ROS2 systems. Deployed within a Docker container, the bridge is constructed using a multi-stage Dockerfile.
-        The different stages allow for each ROS environment to be built properly, enabling the bridge to be compiled with 
-        only the necessary components from each stage. In this project, this bridge is used to send a custom message type from 
-        ROS2 Galactic to ROS1 Noetic. <br><br>
+        The first stage creates the ROS1 environment (Noetic), the second stage creates the ROS2 environment
+        (Galactic), and the third stage creates the ROS1 bridge environment (ROS2 Galactic), by combining the necessary 
+        components of the previous stages. The different stages allow for the ROS1, ROS2, and ROS1 bridge environments to be built properly.
+        In this project, the bridge is used to send a custom message type from ROS2 Galactic to ROS1 Noetic. <br><br>
     </section>
 
     <section id="section2">
