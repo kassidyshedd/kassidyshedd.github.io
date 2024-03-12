@@ -70,7 +70,7 @@
             <li><strong>WAITING: </strong> By default, ROBOTIS remains idle until activated through a service call, 
                 initiating the transition to the next state.</li>
             <li><strong>PROCESSING: </strong> Handled by the 'audio' node, while in this state, ROBOTIS analyzes the audio file, 
-                identifying the track through Shazamio and determining the song's tempo using Spotipy.
+                identifying the track through shazamio and determining the song's tempo using Spotipy.
                 <br>This particular node operates under ROS1 Noetic and is programmed in Python.</li>
             <li><strong>PICKING: </strong>Handled by the 'action_pick' node, here ROBOTIS selects dance movements that align with 
                 the song's tempo, determined by dividing the beats per minute (bpm) by 60.
@@ -85,12 +85,18 @@
             </li>
         </ul>
 
+        <br><strong>Using shazamio and Spotipy</strong>
+        <br>The song artist and title are identified by inputting a .wav audio file into shazamio's `recognize_song` function. 
+        The song and artist are then utilized by the Spotipy `search` function, to retrieve the Spotify track id. Finally, the 
+        Spotify track id can be put into Spotipy's `audio_feature` function, which returns the song's tempo. <br>
+
         <br><strong>Docker Systems:</strong>
-        <br> At the core of the project lies a set of specialized Docker containers, designed to merge diverse environments and frameworks
-        seamlessly. The first container hosts ROS Noetic on Ubuntu 20.04, specifically chosen to satisfy a Python 3.8 requirement. The second
-        container integrates ROS1 Noetic with ROS2 Galactic, operating on Ubuntu 20.04, demonstrating intercommunication using the ROS1 bridge 
-        between different ROS versions. Custom Dockerfiles configure this architecture, ensuring that each component interacts smoothly within 
-        the ROBOTIS ecosystem. This infrastructure, which is depicted in the diagram below, highlights the use of Docker in this project. 
+        <br> This project utilizes specialized Docker containers, designed to combine different ROS environments.
+        The first container hosts ROS1 Noetic on Ubuntu 20.04, specifically chosen to satisfy a Python 3.8 requirement. The second
+        container integrates ROS1 Noetic with ROS2 Galactic, operating on Ubuntu 20.04, allowing communication using the ROS1 bridge 
+        between different ROS versions. Both Dockers are able to communicate with eachother and the host computer.
+        Custom Dockerfiles configure this system, ensuring that each component interacts smoothly within 
+        the ROBOTIS ecosystem. The use of Docker in this project is shown below.
         <br> 
     </section>
 
@@ -103,7 +109,8 @@
         <br> This project incorporates the ROS1 bridge, an essential component for communication between
         ROS1 and ROS2 systems. Deployed within a Docker container, the bridge is constructed using a multi-stage Dockerfile.
         The different stages allow for each ROS environment to be built properly, enabling the bridge to be compiled with 
-        only the necessary components from each stage. 
+        only the necessary components from each stage. In this project, this bridge is used to send a custom message type from 
+        ROS2 Galactic to ROS1 Noetic. <br><br>
     </section>
 
     <section id="section2">
