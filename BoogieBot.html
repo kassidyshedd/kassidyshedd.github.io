@@ -34,7 +34,7 @@
             <a href="https://spotipy.readthedocs.io/en/2.22.1/" target="_blank">Spotipy</a>
             to determine the song's tempo. Utilizing this 
             information, the BoogieBot choreographs dance sequences by aligning pre-designed
-            movements to the rhythm of the music. The technological foundation of this system
+            movements to the rhythm of the music. The foundation of this system
             is built on a multi-docker framework, allowing for functionality across all components.
             Additionally, the project utilizes the ROS1 bridge, facilitating communication between 
             the ROS1 and ROS2 frameworks.<br><br>
@@ -74,14 +74,13 @@
                 <br>This particular node operates under ROS1 Noetic and is programmed in Python.</li>
             <li><strong>PICKING: </strong>Handled by the 'action_pick' node, here ROBOTIS selects dance movements that align with 
                 the song's tempo, determined by dividing the beats per minute (bpm) by 60.
-                <br>This process takes into account the robot's physical limitations, adjusting the frequency of movements to align
-                suitably with the song's tempo.
+                <br>This process takes into account the robot's physical limitations, and adjusts movements to align
+                with the song's tempo.
                 <br>This particular node operates under ROS2 Galactic.
             <li><strong>EDITING: </strong> Handled by the 'action_edit' node, here ROBOTIS compiles the selected movements into a 
-                comprehensive YAML action file, which contains all the details required for the execution of the dance routine.
+                 YAML action file, which contains all the details required for the execution of the dance routine.
             <li><strong>PLAYING: </strong> Handled by the 'action_play' node, in this final state, ROBOTIS performs the choreographed
-                dance. This stage reflects the culmination of the preceding processes, showcasing the robot's ability to translate rhythm
-                into motion. 
+                dance.
                 <br> (Note: The sound of the robot's motion may exceed the audio output; hence the overlay of music in the videos.)
             </li>
         </ul>
@@ -91,7 +90,7 @@
         seamlessly. The first container hosts ROS Noetic on Ubuntu 20.04, specifically chosen to satisfy a Python 3.8 requirement. The second
         container integrates ROS1 Noetic with ROS2 Galactic, operating on Ubuntu 20.04, demonstrating intercommunication using the ROS1 bridge 
         between different ROS versions. Custom Dockerfiles configure this architecture, ensuring that each component interacts smoothly within 
-        the ROBOTIS ecosystem. This infrastructure, which is depicted in the diagram below, highlights the use of Docker technology in this project. 
+        the ROBOTIS ecosystem. This infrastructure, which is depicted in the diagram below, highlights the use of Docker in this project. 
         <br> 
     </section>
 
@@ -101,7 +100,7 @@
 
     <section id="section5">
         <br><strong><u>ROS1 Bridge: </u></strong>
-        <br> This project's infrastructure incorporates the ROS1 bridge, an essential component for facilitating communication between
+        <br> This project incorporates the ROS1 bridge, an essential component for communication between
         ROS1 and ROS2 systems. Deployed within a Docker container, the bridge is constructed using a multi-stage Dockerfile.
         The different stages allow for each ROS environment to be built properly, enabling the bridge to be compiled with 
         only the necessary components from each stage. 
