@@ -1,0 +1,272 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Slabo 27px', serif; /* Updated font family */
+    color: #494D81; /* Font color */
+    background: linear-gradient(to right, #a9afd1, #a1cdf4);
+}
+
+section {
+    width: 100%;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    box-sizing: border-box;
+    font-size: 2.5vh;
+}
+
+#section1 {
+    margin-top: 2vh; /* Adjust so that section1 starts below the .top-links */
+}
+
+#section1 a {
+    color: #494D81; /* Set this to whatever your text color is */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold; /* Keeps text bold */
+}
+
+
+#section2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.video-container {
+    text-align: left;
+    margin: 15px;
+    font-size: 2vh;
+}
+
+.titleheader{
+    font-family: 'Slabo 27px', serif;
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 5.0vh;
+    color: #494D81;
+}
+
+.video-container video {
+    height: 50vh; /* Set a fixed height */
+    width: auto; /* Automatically adjust the width to maintain aspect ratio */
+    max-width: 100%; /* You can change this based on your preference */
+}
+
+.video-container1 video {
+    text-align: center;
+    width: 50vh;
+}
+
+.video-container2 video {
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+.video-container2 {
+    text-align: center;
+    margin: auto; /* This centers the container within the flexbox */
+    width: 75%; /* Adjust this as needed */
+    height: auto;
+}
+
+.video-container img {
+    display: block; /* Makes elements stack vertically */
+    max-width: 100%; /* Ensures they do not overflow their container */
+    height: auto; /* Maintains the aspect ratio */
+    margin-bottom: 10px; /* Adds some space below each element */
+}
+
+
+.top-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* This spreads out the child elements */
+    top: 0; /* Aligns container to the top of the page */
+    left: 0; /* Aligns container to the left of the page */
+    padding: 10px; /* Adds some space around the links */
+}
+
+.returnHome a, .ghlink a {
+    font-family: 'Slabo 27px', serif;
+    font-weight: bold;
+    color: #494D81;
+    text-decoration: none;
+    font-size: 3.5vh;
+}
+
+.returnHome {
+    text-align: left;
+    margin-left: 2vw;
+    padding-top: 1.5vh;
+}
+
+.ghlink {
+    text-align: right;
+    margin-right: 2vw;
+    padding-top: 1.5vh;
+}
+
+.section4 {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    padding: 2vh 0;
+    width: 100%; /* Ensure the section takes up the full width */
+}
+
+.full-page-image {
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Prevents the image from exceeding the container width */
+    max-height: 100%; /* Prevents the image from exceeding the container height */
+}
+
+.half-page-image img{
+    display: block;
+    width: 80%;
+    height: auto; /* Adjust as needed */
+    max-width: 100%; /* Prevents the image from exceeding the container width */
+    max-height: 100%; /* Prevents the image from exceeding the container height */
+    margin: auto;
+}
+
+
+
+/* .color {
+    background: linear-gradient(to right, #a9afd1, #a1cdf4);
+}
+
+.titleheader {
+    font-family: 'Slabo 27px', serif;
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 5.0vh;
+    color: #494D81;
+}
+
+.returnHome a {
+    font-family: 'Slabo 27px', serif;
+    font-weight: bold;
+    color: #494D81;
+    text-decoration: none;
+    text-align: center;
+    font-size: 3.5vh;
+    margin-left: 2vw;
+    padding-top: 5vh;
+}
+
+.video-container {
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.video-wrapper {
+    box-sizing: border-box;
+    flex: 0 1 auto;
+
+}
+
+.video-wrapper video {
+    height: auto;
+}
+
+.caption {
+    text-align: center;
+    max-width: 100%;
+    font-family: 'Slabo 27px', serif;
+    font-size: 2.7vh;
+    color: #494D81;
+    padding-bottom: 2vh;
+}
+
+.page-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.text-column {
+    flex: 1;
+    padding-top: 6.5vh;
+    padding-right: 4vw;
+}
+
+.text-column .ov {
+    font-family: 'Slabo 27px', serif;
+    color: #494D81;
+    font-size: 3.5vh;
+}
+
+.text-column .cont {
+    font-family: 'Slabo 27px', serif;
+    color: #494D81;
+    font-size: 2.7vh;
+    margin-bottom: 0.5em;
+}
+
+.top-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh 4vw;
+}
+
+.returnHome a,
+.ghlink a {
+    font-family: 'Slabo 27px', serif;
+    font-weight: bold;
+    color: #494D81;
+    text-decoration: none;
+    font-size: 3.5vh;
+}
+
+.ampic {
+    display: flex;
+}
+
+.ampic img {
+    height: 100%;
+    height: auto;
+}
+
+.section1,
+.section3,
+.section5 {
+    text-align: center;
+    font-family: 'Slabo 27px', serif;
+    color: #494D81;
+    font-size: 3.5vh;
+    padding: 2vh 4vw;
+}
+
+.section2,
+.section6 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2vh 0;
+} */
+
+/* .section2 .video-container,
+.section6 .video-container {
+    width: 100%; 
+    margin-bottom: 2vh;
+}
+
+.section2 .caption,
+.section6 .caption {
+    text-align: center;
+    max-width: 100%;
+}
+
+.section4 {
+    display: flex;
+    justify-content: center;
+    padding: 2vh 0;
+} */

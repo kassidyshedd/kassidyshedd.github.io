@@ -40,6 +40,14 @@ section {
     font-size: 2vh;
 }
 
+.titleheader{
+    font-family: 'Slabo 27px', serif;
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 5.0vh;
+    color: #494D81;
+}
+
 .video-container video {
     width: 35vh; /* You can change this based on your preference */
 }

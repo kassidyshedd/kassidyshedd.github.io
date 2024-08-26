@@ -10,18 +10,122 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&family=Slabo+27px&display=swap" rel="stylesheet">
 </head>
-<body class="color">
-    <div class="titleheader">
-        <h1>
-            Under construction, come back later!
-        </h1>
+<body>
+
+    <div class="top-links">
+        <div class="returnHome">
+            <a href="index.html">Return to the Main Page</a>
+        </div>
     </div>
 
-    <div class="returnHome">
-        <a href="index.html">
-            Return to the Main Page
-        </a>
+    <div class="titleheader">
+        The Visual Tracking and Motion Planning of a 6-DoF Robot Arm (ViperX 300 S from Trossen Robotics) for Robot-Assisted Handmade Tortillas
     </div>
+
+    <section id="section1">
+        <strong><u>Project Description</u></strong> <br>
+            This project focuses on automating the labor-intensive process of making handmade tortillas using 
+            a 6-Degrees of Freedom (6-DoF) robot arm. By integrating advanced tracking and motion planning
+            algorithms, the robot can efficiently and accurately handle different positions of tortilla 
+            dough balls, enhancing productivity and uniformity in the production process. 
+    </section>
+
+    <section id="section1">
+        <strong><u>Core Features</u></strong> <br>
+        <ul>
+            <li><strong>Automatic Doughball Handling: </strong> Use a robotic arm to automate the repetitive task
+            of moving doughballs from one location to another.</li>
+            <li><strong>Improved Efficiency and Uniformity: </strong> Implement off-line motion planning to optimize 
+            the robot's movements and adapt to changes in the doughball layout.</li>
+            <li><strong>Visual Tracking: </strong> A camera positioned above the workspace provides real-time tracking 
+            (using a Fiducial Marker) and allows for adaptation to changes in doughball placement.</li> 
+            <li><strong>Machine Learning:</strong> Integration of machine learning libraries using the sklearn library 
+            to improve the robot's decision-making process and use the best angle of approach to grab doughballs. </li>
+        </ul>
+    </section>
+
+    <section id="section2">
+        <div class="video-container">
+            <video autoplay muted loop controls>
+                <source src="videos/lnl.mp4" type="video/mp4">
+            </video> 
+        </div>
+
+        <div class="video-container">
+            <video autoplay muted loop controls>
+                <source src="videos/l2mi.mp4" type="video/mp4">
+            </video> 
+        </div>
+
+        <div class="video-container">
+            <video autoplay muted loop controls>
+                <source src="videos/gjwhv.mp4" type="video/mp4">
+            </video> 
+        </div>
+    </section>
+
+    <section id="section1">
+        <strong><u>Determining the Angle of Approach (AoA) using Machine Learning</u></strong> <br>
+    A Random Forest Regressor was chosen as the algorithm that provided the most robust performance in varied scenarios. 
+
+    <ul>
+        <li><strong>Traning the Model:</strong> 
+            <ul>
+                <li>
+                    Data Collection: Data was gathered from multiple test runs, capturing various scenarios
+                    of doughball placements.
+                </li>
+                <li>
+                    Feature Selection: Key features include x, y, z coordinates of the doughballs and the angle of 
+                    approach.
+                </li>
+                <li>
+                    Model Traning: A dataset of 1000 different possible doughball placements was hand annotated with the best
+                    angle of approach (angle increments of 15 degrees - 0, 15, 45, 60, 90, etc..). The Random Forest Regressor model was
+                    trained using this annotated dataset to predict the optimal angle of approach. 
+                </li>
+                -----Place image of trained dataset------
+            </ul>
+        <li><strong>AoA Determination: </strong> 
+            <li>
+                Input Processing: Trained model processes the input data (current coordinates) to determine the best
+                AoA for each doughball.
+            </li>
+            <li>
+                AoA Decision: The AoA function uses the model output to decide which angle to approach (in increments of 15 degress)
+                the doughball, considering potential obstructions and kinematic constraints.
+            </li>
+    </ul>
+</section>
+
+    <section id="section1">
+        <strong><u>State Machine</u></strong><br>
+        ----- Place image of state diagram -----
+        <ul>
+            <li><strong>Initialize: </strong> Robot will calibrate its position using a fiducial marker, and a reference 
+            doughball is placed the the center of the designated work area. This establishes baseline coordinates and any 
+            necessary offsets for accurate operation.</li>
+            <li><strong>Visual Scanning (continuous): </strong> An Intel Realsense is positioned approximatley 1 meter above the doughball
+            to provide a birds eye view. <br>
+            The camera continuously scans the workspace to detect the presence and positions of doughballs in real-time.</li>
+            <li><strong>Angle of Approach Determination: </strong> Based on the detected positions, the angle of approach (AoA) for 
+            picking up each doughball is determined using a machine learning algorithm. This decision considers whether the 
+            doughball is close to the center of the edges of the workspace. </li> 
+            <li><strong>Motion Planning: </strong> The robot arm's movement is planned using the determined AoA, ensuring it approaches 
+            doughballs at the correct orientation. </li>
+            <li><strong>Doughball pickup: </strong> The robot arm moves to the correct location, and the gripper gently grabs
+            the doughball without causing deformation or damage. </li>
+            <li><strong>Resting:</strong> Once all doughballs are handled, the robot returns to its home position, ready for
+            more doughballs to be placed.</li>
+
+        </ul>
+
+    </section>
+
+
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>

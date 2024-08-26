@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="robot-surgery.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&family=Slabo+27px&display=swap" rel="stylesheet">
+</head>
+<body class="color">
+
+    <div class="top-links">
+        <div class="returnHome">
+            <a href="index.html">Return to the Main Page</a>
+        </div>
+        <div class="ghlink">
+            <a href="https://github.com/kassidyshedd/FinalProject">
+                Click to go to GitHub Page!
+            </a>
+        </div>
+    </div>
+
+
+    <br>
+
+    <div class="titleheader">
+        <h1>
+            Low-Cost Robot-Assisted Spinal Surgery Solution
+        </h1>
+    </div>
+
+    <section id="section1">
+        <strong><u>Project Overview</u></strong>
+
+            <br>In this project, I developed a low-cost, robot-assisted solution for spinal surgery, 
+            focusing primarily on spinal injections. This project involves several critical steps to 
+            ensure accurate and precise surgical procedures using 2D imaging. <br>
+
+            <br>The first step was to obtain the camera intrinsics from a C-arm machine, which is crucial 
+            for accurate camera positioning information. To achieve this, I designed a custom 3D fiducial 
+            marker inspired by existing research <a href="https://www.mdpi.com/1424-8220/20/1/36" target="_blank">(linked here)</a>. 
+            This fiducial was 3D printed and 
+            incorporated stainless steel ball bearings, detectable in X-ray imaging. Using OpenCV's blob 
+            detection, I determined the center of each ball and established their positions within the fiducial's 
+            3D coordinate system, allowing for the calculation of the C-arm camera intrinsics, such as focal length 
+            and principal point.<br>
+            
+            <br>The second step was to determine the entry point for the spinal injection. Using two images captured 
+            by an Intel RealSense camera, each containing AprilTags, I employed a stereo camera model to identify the 
+            entry point in each image. These points were then projected into a 3D space relative to the world frame, 
+            providing a precise location for the injection entry.<br>
+
+            <br>The third step was to identify the target point using two X-ray images taken at a 90° rotation from 
+            each other. Using the intrinsics obtained in the first step and one of the AprilTags from the second step 
+            attached to my 3D fiducial, I employed another stereo camera model and projected the target point into a 
+            3D space relative to the fiducial, then further transformed the point into the world frame.<br>
+
+            <br>Finally, I used the entry and target points to determine the needle insertion trajectory, including both 
+            the orientation and distance required to reach the target point from the entry point. The project culminated 
+            in sending movement commands to a robot, guiding it to the entry point with the gripper positioned correctly 
+            for needle insertion. <br><br>
+    </section>
+
+    <section id="section2">
+        <div class="video-container2">
+            <video autoplay muted loop controls>
+                <source src="videos/pov.mp4" type="video/mp4">
+            </video> 
+            <p>Video description of the project, highlighting the entire process. 
+            </p>
+        </div>
+    </section>
+
+    <section id="section3">
+        <br>
+        <strong><u>Core Features:</u></strong><br>
+
+        <strong>C-ARM Camera Calibration</strong>
+        <br>The first phase of this project involved determining the camera intrinsics of a C-arm machine, which is necessary
+         for retrieving accurate camera positioning and orientation information. To achieve this, I designed a custom 3D fiducial 
+         marker, which was central to the calibration process. This design was inspired by a research paper that used 3D fiducials 
+         to determine intrinsics. The fiducial was 3D printed and incorporated stainless steel ball bearings, 
+         which were selected for their high visibility in X-ray imaging.
+        <br><br>
+        <section id="section2">
+            <img src="photos/fiducial_imge.png" alt="Description of half-page image" class="full-page-image">
+            <p><br>The three 3D fiducials used in the camera calibration process for the C-arm.</p>
+        </section>
+        <br>
+        The next step was to calibrate the C-arm using this fiducial. The fiducial was placed in the imaging field of the C-arm, and 
+        several X-rays were captured (at least 10 from the top view and 10 from the side view). I utilized OpenCV to process the X-ray 
+        images and perform blob detection on the fiducial, which gave the center of each ball bearing. Once the centers of the ball bearings 
+        were identified, I established a 3D coordinate system for the fiducial marker, and then mapped the 2D positions of the detected centers 
+        in the X-ray image to this 3D coordinate system. Using OpenCV, I was then able to solve for the camera's intrinsic properties. The 
+        accuracy of these intrinsic parameters directly affects the accuracy of my trajectory generation.
+        <br><br>
+        <section id="section2">
+            <div class="video-container2">
+                <video autoplay muted loop controls>
+                    <source src="videos/blobdetection.mp4" type="video/mp4">
+                </video> 
+                <p>Blob detection and coordinate mapping process. The process is the same for all fiducials.
+                </p>
+            </div>
+        </section>
+        <br>
+
+        <strong>Determining the Entry Point</strong><br>
+        The second phase of this project involved accurately determining the entry point for the spinal injection. To achieve this, I utilized
+        an Intel RealSense camera to capture two images from different perspectives, each containing AprilTags. In the first image, two AprilTags 
+        are visible: Tag4, which has a known offset from the world frame, allowing me to establish a reference point in the world coordinate system, 
+        and Tag14, which provides additional spatial information necessary for triangulation.
+        <br><br>
+        <section id="section2">
+            <img src="photos/entry.png" alt="Description of full-page image" class="half-page-image">
+            <p><br>The two images used in determining the entry point. The X represents the desired entry point and the purple circle shows 
+            location in simulated 3D space.</p>
+        </section>
+        <br>
+        Using a stereo camera model, a technique that leverages two or more images taken from different angles to determine the 3D coordinates of points 
+        in a scene, I manually identified the same entry point in both images. These points were then projected from both images into a 3D point relative 
+        to the world frame.
+        <br><br>
+
+        <strong>Determining the Target Point Using X-ray Images</strong>
+        <br>The third phase of this project involves accurately determining the target point within the patient's body, which is the final destination for the 
+        needle during the spinal injection. This step is crucial for ensuring the needle reaches the precise anatomical location intended. To determine the target 
+        point, two X-ray images taken at a 90° rotation from each other are used. A trained medical professional selects the target point in both images. This process 
+        uses the camera intrinsics determined in the first phase, ensuring that the transformations used are accurate. Central to this phase is the use of AprilTag 14. 
+        For this phase, Tag14 is attached to the fiducial marker, which allows for a known transform between the fiducial origin and the AprilTag, providing a reliable 
+        frame of reference for the calculations.
+        <br><br>
+        <section id="section2">
+            <img src="photos/target1.png" alt="Description of full-page image" class="half-page-image">
+            <p><br>The two images used for determining the target point. The X represents the desired target point in each image. The photos are taken at 90° rotation from each
+            other. </p>
+        </section>
+        <br>
+        A stereo camera model is again used to triangulate the two chosen points in the X-ray images into a 3D point in the Tag14 coordinate frame (P_tag14). Once P_tag14 is 
+        found, it can then be transformed to the world frame.
+        <br><br>
+
+        <strong>Determining the Trajectory</strong>
+        <br>The final phase of this project involves determining the precise trajectory that the needle must follow to reach the target point previously identified. 
+        This is critical for ensuring that the needle enters at the correct orientation and travels the appropriate distance to reach the designated target. The needle 
+        angle and direction was calculated using the 3D coordinates of the entry and target points, both defined relative to the world frame.
+        I calculated the straight-line distance between the entry point and the target point, which determines how far the needle must travel once it has been inserted 
+        into the body.
+        <br><br>
+        <section id="section2">
+            <img src="photos/trajec.png" alt="Description of full-page image" class=half-page-image">
+            <p><br>Simulation showing the trjectory calculated from the entry and target points. <br>It should be noted that 
+            there is some error in the target point (and therefore trajectory), which is likely due to 
+            imperfect camera calibration. </p>
+        </section>
+        <br><br>
+        Finally, the robot will execute the movement, going to the entry point with its gripper aligned in the correct orientation.
+        <br><br>
+        <section id="section2">
+            <div class="video-container2">
+                <video autoplay muted loop controls>
+                    <source src="videos/findem.mp4" type="video/mp4">
+                </video> 
+                <p>Robot moving to entry location with gripper oriented at trajectory angle.
+                </p>
+            </div>
+        </section>
+        <br><br>
+
+        </body><br>
+
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+</body>
+</html>
