@@ -1,0 +1,130 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Slabo 27px', serif;
+    font-size: 16px;
+    background: linear-gradient(to right, #a9afd1, #a1cdf4);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#robot{
+    height: auto;
+    width: 55vw;
+    stroke-dasharray: 4002;
+    animation: 3s fillSvgRobot linear;
+    padding-top: 2.5vh;
+}
+
+@keyframes fillSvgRobot {
+    0% {
+        stroke-dashoffset: 4002;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+h1 {
+    font-size: 3rem;
+    color: #333;
+    text-align: center;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.video-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    width: 90vw;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-bottom: 5vh;
+}
+
+
+.video-label {
+    text-align: left;
+    position: relative;
+    font-size: 2vw;
+}
+
+.video-cats {
+    text-align: center;
+    position: relative;
+    font-size: 1.75vw;
+}
+
+video {
+    width: 90%;
+    height: auto;
+    display: block;
+}
+
+video:hover {
+    transform: scale(1.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.aboutme {
+    font-family: 'Slabo 27px', serif;
+    padding-bottom: 5vh;
+
+}
+
+h3 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 5rem;
+    }
+    h2 {
+        font-size: 4rem
+    }
+}

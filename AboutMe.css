@@ -1,0 +1,131 @@
+/* Global Styles */
+.color {
+    background: linear-gradient(to right, #a9afd1, #a1cdf4);
+}
+
+.titleheader {
+    font-family: 'Slabo 27px', serif;
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 3rem;
+    color: #494D81;
+}
+
+.ampic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0 10vw;
+}
+
+.ampic img {
+    width: 20vw;
+    height: auto;
+    margin-right: 2rem;
+}
+
+.amtext {
+    font-family: 'Slabo 27px', serif;
+    font-size: 1.5rem;
+    color: #494D81;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .titleheader {
+        font-size: 2rem;
+        margin-top: 3rem;
+    }
+
+    .returnHome a {
+        font-size: 1rem;
+        margin-left: 0;
+    }
+
+    .ampic {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 2vw;
+    }
+
+    .ampic img {
+        width: 60vw;
+        margin: 0 0 2rem 0;
+    }
+
+    .amtext {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .logo1 img, .logo2 img {
+        width: 30vw;
+        margin-left: 0;
+    }
+
+    .logo2 {
+        margin-top: 5vh;
+    }
+}
+
+/* For medium screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .titleheader {
+        font-size: 4rem;
+        margin-top: 4rem;
+    }
+
+    .returnHome a {
+        font-size: 1.25rem;
+    }
+
+    .ampic img {
+        width: 25vw;
+    }
+
+    .amtext {
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    .logo1 img, .logo2 img {
+        width: 15vw;
+    }
+
+    .logo2 {
+        margin-top: -10vh;
+    }
+}
+
+/* For large screens */
+@media (min-width: 1025px) {
+    .titleheader {
+        font-size: 5rem;
+        margin-top: 5rem;
+    }
+
+    .returnHome a {
+        font-size: 1.5rem;
+    }
+
+    .ampic img {
+        width: 20vw;
+    }
+
+    .amtext {
+        font-size: 1.75rem;
+        text-align: left;
+    }
+
+    .logo1 img {
+        width: 10vw;
+        margin-left: 35vw;
+    }
+
+    .logo2 img {
+        width: 12vw;
+        margin-left: 60vw;
+        margin-top: -17vh;
+    }
+}
